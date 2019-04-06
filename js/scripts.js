@@ -11,6 +11,15 @@ for(let i = 0; i < images.length; i++) {
 }
 
 
+function updateImage() {
+    i++;
+    if(i === images.length) {
+        i = 0;
+    }
+    body.removeChild(div);
+    div = createDiv();
+    body.insertBefore(div, button);
+}
 
 function createDiv() {
     let div = document.createElement('div');
@@ -25,11 +34,9 @@ body.appendChild(button);
 
 
 button.addEventListener('click', () => {
-    i++;
-    if(i === images.length) {
-        i = 0;
-    }
-    body.removeChild(div);
-    div = createDiv();
-    body.insertBefore(div, button);
+    updateImage();
 });
+
+setInterval(updateImage, 10000);
+
+
